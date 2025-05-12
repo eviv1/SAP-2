@@ -1,0 +1,125 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -10.649
+TNS   : -1067.889
+
+Type  : Slow Model Setup 'inCLK'
+Slack : -9.628
+TNS   : -728.276
+
+Type  : Slow Model Setup 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -9.351
+TNS   : -143.140
+
+Type  : Slow Model Hold 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -7.120
+TNS   : -201.121
+
+Type  : Slow Model Hold 'inCLK'
+Slack : -5.506
+TNS   : -244.037
+
+Type  : Slow Model Hold 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -4.059
+TNS   : -40.453
+
+Type  : Slow Model Recovery 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -8.003
+TNS   : -270.934
+
+Type  : Slow Model Recovery 'inCLK'
+Slack : -6.982
+TNS   : -185.607
+
+Type  : Slow Model Recovery 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -4.739
+TNS   : -72.558
+
+Type  : Slow Model Removal 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -7.693
+TNS   : -113.289
+
+Type  : Slow Model Removal 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -4.632
+TNS   : -50.986
+
+Type  : Slow Model Removal 'inCLK'
+Slack : -1.869
+TNS   : -36.720
+
+Type  : Slow Model Minimum Pulse Width 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -3.680
+TNS   : -642.370
+
+Type  : Slow Model Minimum Pulse Width 'inCLK'
+Slack : -1.880
+TNS   : -268.302
+
+Type  : Slow Model Minimum Pulse Width 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -4.818
+TNS   : -438.991
+
+Type  : Fast Model Setup 'inCLK'
+Slack : -4.246
+TNS   : -275.670
+
+Type  : Fast Model Setup 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -4.012
+TNS   : -58.773
+
+Type  : Fast Model Hold 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -3.660
+TNS   : -164.312
+
+Type  : Fast Model Hold 'inCLK'
+Slack : -3.106
+TNS   : -195.970
+
+Type  : Fast Model Hold 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -2.332
+TNS   : -26.591
+
+Type  : Fast Model Recovery 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -3.712
+TNS   : -111.375
+
+Type  : Fast Model Recovery 'inCLK'
+Slack : -3.140
+TNS   : -72.419
+
+Type  : Fast Model Recovery 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -1.962
+TNS   : -27.628
+
+Type  : Fast Model Removal 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -3.871
+TNS   : -69.124
+
+Type  : Fast Model Removal 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : -2.543
+TNS   : -30.802
+
+Type  : Fast Model Removal 'inCLK'
+Slack : -1.418
+TNS   : -31.191
+
+Type  : Fast Model Minimum Pulse Width 'mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData'
+Slack : -1.880
+TNS   : -367.774
+
+Type  : Fast Model Minimum Pulse Width 'inCLK'
+Slack : -1.880
+TNS   : -268.302
+
+Type  : Fast Model Minimum Pulse Width 'mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQ'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

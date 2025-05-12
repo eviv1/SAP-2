@@ -1,0 +1,537 @@
+Design Assistant report for mMPU
+Wed May 07 12:21:47 2025
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. Critical Violations
+  5. High Violations
+  6. Medium Violations
+  7. Information only Violations
+  8. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Wed May 07 12:21:47 2025 ;
+; Revision Name                     ; mMPU                                ;
+; Top-level Entity Name             ; mMPU                                ;
+; Family                            ; Cyclone II                          ;
+; Total Critical Violations         ; 3                                   ;
+; - Rule A102                       ; 2                                   ;
+; - Rule C101                       ; 1                                   ;
+; Total High Violations             ; 82                                  ;
+; - Rule A108                       ; 26                                  ;
+; - Rule S102                       ; 15                                  ;
+; - Rule S104                       ; 41                                  ;
+; Total Medium Violations           ; 1                                   ;
+; - Rule R102                       ; 1                                   ;
+; Total Information only Violations ; 53                                  ;
+; - Rule T101                       ; 3                                   ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                                                                                                                                ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Option                                                                                                                                                                                                                                                                               ; Setting      ; To ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Design Assistant mode                                                                                                                                                                                                                                                                ; Post-Fitting ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                                                                                                                                        ; 25           ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                                                                                                                                    ; 30           ;    ;
+; Minimum number of node fan-out                                                                                                                                                                                                                                                       ; 30           ;    ;
+; Maximum number of nodes to report                                                                                                                                                                                                                                                    ; 50           ;    ;
+; Rule C101: Gated clock should be implemented according to the Altera standard scheme                                                                                                                                                                                                 ; On           ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                                                                                                                                        ; On           ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                                                                                                                                          ; On           ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                                                                                                                                   ; On           ;    ;
+; Rule C105: Clock signal should be a global signal (Rule applies during post-fitting analysis. This rule applies during both post-fitting analysis and post-synthesis analysis if the design targets a MAX 3000 or MAX 7000 device. For more information, see the Help for the rule.) ; On           ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                                                                                                                                         ; On           ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                                                                                                                                         ; On           ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                                                                                                                                ; On           ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                                                                                                                                    ; On           ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                                                                                                                                  ; On           ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                                                                                                                                            ; On           ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                                                                                                                                     ; On           ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                                                                                                                                             ; On           ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                                                                                                                                             ; On           ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                                                                                                                                           ; On           ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                                                                                                                                    ; On           ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                                                                                                                                         ; On           ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                                                                                                                                           ; On           ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                                                                                                                                         ; On           ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                                                                                                                                      ; On           ;    ;
+; Rule A108: Design should not contain latches                                                                                                                                                                                                                                         ; On           ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                                                                                                                                             ; On           ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                                                                                                                                ; On           ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                                                                                                                                              ; On           ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                                                                                                                                ; On           ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                                                                                                                                        ; On           ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain                                                                                                                 ; On           ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                                                                                                                                              ; On           ;    ;
+; Rule M101: Data bits are not synchronized when transferred to the state machine of asynchronous clock domains                                                                                                                                                                        ; Off          ;    ;
+; Rule M102: No reset signal defined to initialize the state machine                                                                                                                                                                                                                   ; Off          ;    ;
+; Rule M103: State machine should not contain an unreachable state                                                                                                                                                                                                                     ; Off          ;    ;
+; Rule M104: State machine should not contain a deadlock state                                                                                                                                                                                                                         ; Off          ;    ;
+; Rule M105: State machine should not contain a dead transition                                                                                                                                                                                                                        ; Off          ;    ;
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Critical Violations                                                                                                                                                                                                                         ;
++--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
+; Rule name                                                                                                                ; Name                                                                                                             ;
++--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic - Structure 1 ;                                                                                                                  ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_1|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_3|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_6|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_5|outData        ;
+;  Structure 1                                                                                                             ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_4|outData        ;
+;  Structure 1                                                                                                             ; nCLK                                                                                                             ;
+;  Structure 1                                                                                                             ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal6~1                         ;
+;  Structure 1                                                                                                             ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal6~3                         ;
+;  Structure 1                                                                                                             ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal18~0                        ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic - Structure 2 ;                                                                                                                  ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQ  ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ  ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ  ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_3|outQ  ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQ ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQ ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~12                                    ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~5                                     ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~11                                    ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~8                                     ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~10                                    ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~9                                     ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~7                                     ;
+;  Structure 2                                                                                                             ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~6                                     ;
+; Rule C101: Gated clock should be implemented according to the Altera standard scheme                                     ; nCLK                                                                                                             ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_we_reg                 ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_datain_reg0            ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_memory_reg0            ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg0           ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg1           ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg2           ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg3           ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg4           ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg5           ;
+;  Gated clock destination node(s) list                                                                                    ; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_0pm1:auto_generated|ram_block1a0~porta_address_reg6           ;
++--------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; High Violations                                                                                                                                                                                                                           ;
++-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
+; Rule name                                                                                                             ; Name                                                                                                              ;
++-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
+; Rule A108: Design should not contain latches - Latch 1                                                                ;                                                                                                                   ;
+;  Latch 1                                                                                                              ; mBUS:Bus|outData[0]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 2                                                                ;                                                                                                                   ;
+;  Latch 2                                                                                                              ; mBUS:Bus|outData[3]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 3                                                                ;                                                                                                                   ;
+;  Latch 3                                                                                                              ; mALU:ALU|outQ[3]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 4                                                                ;                                                                                                                   ;
+;  Latch 4                                                                                                              ; mBUS:Bus|outData[2]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 5                                                                ;                                                                                                                   ;
+;  Latch 5                                                                                                              ; mBUS:Bus|outData[7]_307                                                                                           ;
+; Rule A108: Design should not contain latches - Latch 6                                                                ;                                                                                                                   ;
+;  Latch 6                                                                                                              ; mBUS:Bus|outData[5]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 7                                                                ;                                                                                                                   ;
+;  Latch 7                                                                                                              ; mBUS:Bus|outData[4]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 8                                                                ;                                                                                                                   ;
+;  Latch 8                                                                                                              ; mALU:ALU|outQ[4]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 9                                                                ;                                                                                                                   ;
+;  Latch 9                                                                                                              ; mALU:ALU|outQ[1]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 10                                                               ;                                                                                                                   ;
+;  Latch 10                                                                                                             ; mALU:ALU|outQ[2]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 11                                                               ;                                                                                                                   ;
+;  Latch 11                                                                                                             ; mALU:ALU|outQ[0]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 12                                                               ;                                                                                                                   ;
+;  Latch 12                                                                                                             ; mBUS:Bus|outData[7]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 13                                                               ;                                                                                                                   ;
+;  Latch 13                                                                                                             ; mALU:ALU|outQ[7]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 14                                                               ;                                                                                                                   ;
+;  Latch 14                                                                                                             ; mBUS:Bus|outData[6]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 15                                                               ;                                                                                                                   ;
+;  Latch 15                                                                                                             ; mALU:ALU|outQ[6]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 16                                                               ;                                                                                                                   ;
+;  Latch 16                                                                                                             ; mBUS:Bus|outData[14]$latch                                                                                        ;
+; Rule A108: Design should not contain latches - Latch 17                                                               ;                                                                                                                   ;
+;  Latch 17                                                                                                             ; mBUS:Bus|outData[14]_468                                                                                          ;
+; Rule A108: Design should not contain latches - Latch 18                                                               ;                                                                                                                   ;
+;  Latch 18                                                                                                             ; mBUS:Bus|outData[9]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 19                                                               ;                                                                                                                   ;
+;  Latch 19                                                                                                             ; mBUS:Bus|outData[11]$latch                                                                                        ;
+; Rule A108: Design should not contain latches - Latch 20                                                               ;                                                                                                                   ;
+;  Latch 20                                                                                                             ; mBUS:Bus|outData[10]$latch                                                                                        ;
+; Rule A108: Design should not contain latches - Latch 21                                                               ;                                                                                                                   ;
+;  Latch 21                                                                                                             ; mBUS:Bus|outData[8]$latch                                                                                         ;
+; Rule A108: Design should not contain latches - Latch 22                                                               ;                                                                                                                   ;
+;  Latch 22                                                                                                             ; mBUS:Bus|outData[12]$latch                                                                                        ;
+; Rule A108: Design should not contain latches - Latch 23                                                               ;                                                                                                                   ;
+;  Latch 23                                                                                                             ; mBUS:Bus|outData[13]$latch                                                                                        ;
+; Rule A108: Design should not contain latches - Latch 24                                                               ;                                                                                                                   ;
+;  Latch 24                                                                                                             ; mBUS:Bus|outData[15]$latch                                                                                        ;
+; Rule A108: Design should not contain latches - Latch 25                                                               ;                                                                                                                   ;
+;  Latch 25                                                                                                             ; mALU:ALU|outQ[5]                                                                                                  ;
+; Rule A108: Design should not contain latches - Latch 26                                                               ;                                                                                                                   ;
+;  Latch 26                                                                                                             ; mBUS:Bus|outData[1]$latch                                                                                         ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17|outQ  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13|outQB ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQB ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQB ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQ   ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ   ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ   ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17|outQB ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13|outQ  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQ  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQ  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ  ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQB  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ   ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQB  ;
+;  Synchronous and reset port source node(s) list                                                                       ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ   ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_5|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_0|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_1|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_2|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_3|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_4|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_7|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_6|outData                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_7|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_7|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_6|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_6|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[6]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[0]~en                                                                                      ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[1]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[2]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[3]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[0]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_0|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_0|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_1|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_1|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[4]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[5]~reg0                                                                                    ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_4|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_4|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_5|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_5|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_2|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_2|outData                                                         ;
+;  Violated clock and other port source node(s) list                                                                    ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_3|outData                                                         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_3|outData                                                         ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mMemory:Memory|outData[7]~reg0                                                                                    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[0]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[1]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[2]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[3]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[4]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[5]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[6]                                 ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                 ; mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[7]                                 ;
++-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Medium Violations                                                                                                                                                                                 ;
++---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+; Rule name                                                                             ; Name                                                                                                      ;
++---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+; Rule R102: External reset signals should be synchronized using two cascaded registers ; inRST                                                                                                     ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_1|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_3|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_6|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_5|outData ;
+;  Reset signal destination node(s) list                                                ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_4|outData ;
++---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                                                                                                   ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+; Rule name                                                        ; Name                                                                                                             ; Fan-Out ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; nCLK~clkctrl                                                                                                     ; 147     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~12                                    ; 56      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal4~2                         ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; nCLK~clkctrl                                                                                                     ; 147     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~12                                    ; 56      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal4~2                         ; 31      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; noLp                                                                                                             ; 29      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_3|outQ  ; 27      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ  ; 27      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_4|outData        ; 26      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mBUS:Bus|outData[14]_468                                                                                         ; 23      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_2|outQ  ; 23      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mBUS:Bus|outData[7]_307                                                                                          ; 21      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData        ; 21      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_8|outQ  ; 21      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mALU:ALU|outQ[0]~60                                                                                              ; 19      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_3|outData        ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc~0                                   ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_5|outData        ; 18      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_6|outData        ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; noLm                                                                                                             ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; nCLK                                                                                                             ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mBUS:Bus|comb~1                                                                                                  ; 17      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData        ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_9|outQ  ; 15      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRDWR~2                                    ; 13      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mALU:ALU|outQ[0]~10                                                                                              ; 13      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_7|outQ  ; 13      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_1|outData        ; 13      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ  ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_2|outData                                                     ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_4|outData                                                     ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mALU:ALU|outQ[0]~11                                                                                              ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData        ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mALU:ALU|outQ[7]~8                                                                                               ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQ  ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|Su~0                                       ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal0~0                         ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc                                     ; 11      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmdr~3                                    ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oEb~0                                      ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLa~3                                      ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLb                                        ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mBUS:Bus|outData[1]~53                                                                                           ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oEtmp                                      ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mBUS:Bus|outData[4]~56                                                                                           ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oEu                                        ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_0|outData                                                     ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLo                                        ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLc                                        ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mBUS:Bus|outData[7]~59                                                                                           ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal23~0                        ; 10      ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Design Assistant
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed May 07 12:21:47 2025
+Info: Command: quartus_drc --read_settings_files=on --write_settings_files=off mMPU -c mMPU
+Warning (335093): TimeQuest Timing Analyzer is analyzing 25 combinational loops as latches.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'mMPU.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained base clocks found in the design
+Warning (332125): Found combinational loop of 4 nodes
+    Warning (332126): Node "Bus|outData[0]$latch|combout"
+    Warning (332126): Node "Bus|outData[0]$latch~0|dataa"
+    Warning (332126): Node "Bus|outData[0]$latch~0|combout"
+    Warning (332126): Node "Bus|outData[0]$latch|datab"
+Warning (332191): Clock target mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData of clock mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData is fed by another target of the same clock.
+Critical Warning (308033): (Critical) Rule A102: Register output should not drive its own control signal directly or through combinational logic. Found 2 combinational loops related to this rule.
+    Critical Warning (308012): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7|outData"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ"
+Critical Warning (308019): (Critical) Rule C101: Gated clock should be implemented according to the Altera standard scheme. Found 1 node(s) related to this rule.
+    Critical Warning (308012): Node  "nCLK"
+Critical Warning (308055): (High) Rule A108: Design should not contain latches. Found 26 latch(es) related to this rule.
+    Critical Warning (308012): Node  "mBUS:Bus|outData[0]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[3]$latch"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[3]"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[2]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[7]_307"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[5]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[4]$latch"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[4]"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[1]"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[2]"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[0]"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[7]$latch"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[7]"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[6]$latch"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[6]"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[14]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[14]_468"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[9]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[11]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[10]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[8]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[12]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[13]$latch"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[15]$latch"
+    Critical Warning (308012): Node  "mALU:ALU|outQ[5]"
+    Critical Warning (308012): Node  "mBUS:Bus|outData[1]$latch"
+Critical Warning (308074): (High) Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source. Found 15 node(s) related to this rule.
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13|outQB"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQB"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQB"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17|outQB"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQ"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQB"
+    Critical Warning (308012): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQB"
+Critical Warning (308018): (High) Rule S104: Clock port and any other port of a register should not be driven by the same signal source. Found 41 node(s) related to this rule.
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_5|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_0|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_1|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_2|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_3|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_4|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_7|outData"
+    Critical Warning (308012): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_6|outData"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_7|outData"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_7|outData"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_6|outData"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_6|outData"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[6]~reg0"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[0]~en"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[1]~reg0"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[2]~reg0"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[3]~reg0"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[0]~reg0"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_0|outData"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_0|outData"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_1|outData"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_1|outData"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[4]~reg0"
+    Critical Warning (308012): Node  "mMemory:Memory|outData[5]~reg0"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_4|outData"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_4|outData"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_5|outData"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_5|outData"
+    Critical Warning (308012): Node  "mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_2|outData"
+    Critical Warning (308012): Node  "mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_2|outData"
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Warning (308023): (Medium) Rule R102: External reset signals should be synchronized using two cascaded registers. Found 1 node(s) related to this rule.
+    Warning (308010): Node  "inRST"
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 3 node(s) with highest fan-out.
+    Info (308011): Node  "nCLK~clkctrl"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~12"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal4~2"
+Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info (308011): Node  "nCLK~clkctrl"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRST~12"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder|Equal4~2"
+    Info (308011): Node  "noLp"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_3|outQ"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQ"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_4|outData"
+    Info (308011): Node  "mBUS:Bus|outData[14]_468"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_2|outQ"
+    Info (308011): Node  "mBUS:Bus|outData[7]_307"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_8|outQ"
+    Info (308011): Node  "mALU:ALU|outQ[0]~60"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_3|outData"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc~0"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_5|outData"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_6|outData"
+    Info (308011): Node  "noLm"
+    Info (308011): Node  "nCLK"
+    Info (308011): Node  "mBUS:Bus|comb~1"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2|outData"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_9|outQ"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oRDWR~2"
+    Info (308011): Node  "mALU:ALU|outQ[0]~10"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_7|outQ"
+    Info (308011): Node  "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_1|outData"
+    Info (308011): Node  "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQ"
+    Info (308011): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_2|outData"
+    Info (308011): Node  "mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_4|outData"
+    Info (308011): Node  "mALU:ALU|outQ[0]~11"
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 53 information messages and 86 warning messages
+Info: Quartus II 64-Bit Design Assistant was successful. 0 errors, 89 warnings
+    Info: Peak virtual memory: 4534 megabytes
+    Info: Processing ended: Wed May 07 12:21:47 2025
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

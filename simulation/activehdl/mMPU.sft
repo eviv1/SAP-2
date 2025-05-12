@@ -1,0 +1,5 @@
+set tool_name "Active-HDL (Verilog)"
+set corner_file_list {
+	{{"Slow Model"} {mMPU.vo mMPU_v.sdo}}
+	{{"Fast Model"} {mMPU_fast.vo mMPU_v_fast.sdo}}
+}

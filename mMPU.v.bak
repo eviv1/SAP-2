@@ -1,0 +1,107 @@
+module mMPU(input inCLK,
+				input inRST,
+				input [7:0] inData,
+				output [7:0] OutReg,
+				output [15:0] oWbus, oPC,
+				output [7:0] oMemory, oInst,
+				output [7:0] oTMPREG, 
+				output [7:0] oBReg,
+				output [7:0] oCReg,
+				output [7:0] oAcc,
+				output [1:0] oFlag,
+				output oEp, 
+				output oCp,
+				output oLi,
+				output oHLT,
+				output oCLK,
+				output [17:0] oTstate);
+				
+assign oCp = noCp;
+assign oEp = noEp;
+assign oHLT = noHLT;
+assign oWbus = tWbus;
+assign oLi = noLi;
+assign oTstate = noTstate;
+assign oAcc = noQACC;
+assign oMemory = nMemOut;
+assign oTMPREG = noQTMP;
+assign oBReg = noQB;
+assign oCReg = noQC;
+assign oInst = nIRout;
+assign oPC = noQP;
+assign oFlag = {nSF, nZF};   //Flag - Sign Flah, Zero Flag
+assign nCLK = inCLK & ~oHLT;
+assign oCLK = nCLK;
+
+				
+wire [15:0] tWbus;
+wire [15:0] ntWbus;
+wire nCLK, nSF, nZF, noLp, noLm, noEpc;
+	
+wire noLmar, noLmarc, noLmdr, noLi, noLa, noLb, noLc, noLtmp, noLpcl, noLpcu;
+wire noEi, noEp, noEmdr, noCE, noEa, noEb, noEc, noEtmp, noEu, noL1, noL2, noEpcu, noEpcl;
+wire noCp, noRST, noRDWR, noCLR_RST;
+wire nSu;
+
+wire [7:0] nIRout, nMemOut, nMDRout, nMDRin, noQMDR, noQALU, noQACC, noQTMP, noQB, noQC, noQIN;
+wire [15:0] niAddress, noQP;
+wire [17:0] noTstate;
+
+assign noLp = noLpcl | noLpcu;
+assign noLm = noLmar | noLmarc;
+assign noEpc = noEp | noEpcu | noEpcl;
+
+//Bus
+mBUS Bus(.inData(ntWbus), .UpByte(noQMDR), .Epcu(noEpcu), .Epcl(noEpcl), .Lpcu(noLpcu), .Lpcl(noLpcl), .Lmarc(noLmarc), 
+			.L1(noL1), .L2(noL2), .Lmar(noLmar), .Lmdr(noLmdr), .iRDWR(noRDWR), .La(noLa), .Lb(noLb), .Lc(noLc), 
+			.Ltmp(noLtmp), .Lo(noLo), .Ei(noEi), .Ep(noEp), .Emdr(noEmdr), 
+			.Ea(noEa), .Eb(noEb), .Ec(noEc), .Etmp(noEtmp), .Eu(noEu), .outData(tWbus));
+
+//ProgramCounter
+mProgramCounter ProgramCounter(.inINC(noCp), .inEnableOut(noEpc), .inCLK(nCLK), .inData(tWbus), .inRST(noRST), 
+			.inPRST(noLp), .outQP(noQP), .tWbus(ntWbus));
+
+//Input Register
+mInput_Register Input_Register(.inData(inData), .inCLK(nCLK), .inLoadInput(noLi), .inEnableINtoBus(noEi), .outQ(noQIN), 
+			.outInput_Register(ntWbus[7:0]));
+
+//Memory Address Register
+mMAR MAR(.inData(tWbus), .inCLK(nCLK), .inLoad(noLm), .outData(niAddress));
+
+//Memory
+mMemory Memory(.inAddress(niAddress), .inData(nMDRout), .inCE(noCE), .inRDWR(noRDWR), .inCLK(nCLK), .outData(nMemOut), .tMDR(nMDRin));
+
+//Memory Data Register
+mMDR MDR(.inDataMem(nMDRin), .inDataBus(tWbus), .inCLK(nCLK), .inLoad_MDR(noLmdr), .inS_RW(noRDWR), .inEnableOut(noEmdr), .outQ(noQMDR), 
+			.outDataBus(ntWbus[7:0]), .outDataMem(nMDRout));
+
+//Instruction Register
+mInstructionRegister InstructionRegister(.inData(tWbus[7:0]), .inCLK(nCLK), .inRST(inRST), .inLoad(noLi), .outInst(nIRout));
+
+//Controller-Sequencer
+mControllerSequencer ControllerSequencer(.inData(nIRout), .inCLK(nCLK), .inRST(noRST), .iZflag(nZF), .oHLT(noHLT), .oTstate(noTstate), 
+			.oLmar(noLmar), .oLmarc(noLmarc), .oLmdr(noLmdr), .oLi(noLi), .oLa(noLa), .oLb(noLb), .oLc(noLc), .oLtmp(noLtmp), .oLo(noLo), 
+			.oLpcl(noLpcl), .oLpcu(noLpcu), .oEi(noEi), .oEp(noEp), .oEmdr(noEmdr), .oCE(noCE), .oEa(noEa), .oEb(noEb), .oEc(noEc), 
+			.oEtmp(noEtmp), .oEu(noEu), .oL1(noL1), .oL2(noL2), .oEpcu(noEpcu), .oEpcl(noEpcl),
+			.oCp(noCp), .oRST(noRST), .oRDWR(noRDWR), .oCLK_RST(noCLK_RST), .Su(nSu));
+
+//Accumulator
+mAccumulator Acc(.inData(tWbus[7:0]), .inCLK(nCLK), .inLoad(noLa), .inEnable(noEa), .outData(noQACC), .outBus(ntWbus[7:0]));
+
+//ALU
+mALU ALU(.inDataA(noQACC), .inDataB(noQTMP), .inCLK(nCLK), .inRST(inRST), .inOpcode(nIRout), .inEnableOut(noEu), .Su(nSu), 
+			.outQ(noQALU), .outData(ntWbus[7:0]), .outSignFlag(nSF), .outZeroFlag(nZF));
+
+//TMP Register
+mTMP_Register TMP(.inData(tWbus[7:0]), .inCLK(nCLK), .inLoad(noLtmp), .inEnableOut(noEtmp), .outMemory(noQTMP), .outData(ntWbus[7:0]));
+
+//B Register
+mB_Register B(.inData(tWbus[7:0]), .inCLK(nCLK), .inLoad(noLb), .inEnableOut(noEb), .outMemory(noQB), .outData(ntWbus[7:0]));
+
+//C Register
+mC_Register C(.inData(tWbus[7:0]), .inCLK(nCLK), .inLoad(noLc), .inEnableOut(noEc), .outMemory(noQC), .outData(ntWbus[7:0]));
+
+//Output Register
+mOutput_Register Output_Register(.inData(tWbus[7:0]), .inCLK(nCLK), .inLoadOutput(noLo), .outOutput_Register(OutReg));
+
+endmodule

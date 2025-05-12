@@ -1,0 +1,81 @@
+Source Files Read report for mMPU
+Wed May 07 12:22:42 2025
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Source Files Read
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                                 ;
++---------------------------------------+-----------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path      ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                                                                                               ; Library ;
++---------------------------------------+-----------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; mMPU.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mMPU.v                                ;         ;
+; mMUX_2x1.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mMUX_2x1.v                            ;         ;
+; mDEMUX_1x2.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mDEMUX_1x2.v                          ;         ;
+; mFlipFlop_JK_PosedgeCLK_NRST.v        ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mFlipFlop_JK_PosedgeCLK_NRST.v        ;         ;
+; mFlipFlop_T_PosedgeCLK_NRST.v         ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mFlipFlop_T_PosedgeCLK_NRST.v         ;         ;
+; mFlipFlop_D_PosedgeCLK_Enable.v       ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mFlipFlop_D_PosedgeCLK_Enable.v       ;         ;
+; mFlipFlop_D_PosedgeCLK_MDR.v          ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mFlipFlop_D_PosedgeCLK_MDR.v          ;         ;
+; mFlipFlop_D_PosedgeCLK_NRST_Enable.v  ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mFlipFlop_D_PosedgeCLK_NRST_Enable.v  ;         ;
+; m8bitFlipFlop_D_PosedgeCLK_Enable.v   ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/m8bitFlipFlop_D_PosedgeCLK_Enable.v   ;         ;
+; mProgramCounter.v                     ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mProgramCounter.v                     ;         ;
+; mRingCounter.v                        ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mRingCounter.v                        ;         ;
+; mB_Register.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mB_Register.v                         ;         ;
+; mC_Register.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mC_Register.v                         ;         ;
+; mTMP_Register.v                       ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mTMP_Register.v                       ;         ;
+; mMemory.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mMemory.v                             ;         ;
+; mMAR.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mMAR.v                                ;         ;
+; mMDR.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mMDR.v                                ;         ;
+; mINC_DEC.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mINC_DEC.v                            ;         ;
+; mALU.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mALU.v                                ;         ;
+; mHalfAdder.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mHalfAdder.v                          ;         ;
+; mFullAdder.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mFullAdder.v                          ;         ;
+; mAccumulator.v                        ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mAccumulator.v                        ;         ;
+; mBUS.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mBUS.v                                ;         ;
+; mControlMatrix.v                      ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mControlMatrix.v                      ;         ;
+; mInput_Register.v                     ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mInput_Register.v                     ;         ;
+; mOutput_Register.v                    ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mOutput_Register.v                    ;         ;
+; mControllerSequencer.v                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mControllerSequencer.v                ;         ;
+; mInstructionRegister.v                ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mInstructionRegister.v                ;         ;
+; mInstructionDecoder.v                 ; yes             ; User Verilog HDL File                                 ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/mInstructionDecoder.v                 ;         ;
+; program_files/dcr a.txt               ; yes             ; Auto-Found File                                       ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/program_files/dcr a.txt               ;         ;
+; altsyncram.tdf                        ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                                                                                                           ;         ;
+; stratix_ram_block.inc                 ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                                                    ;         ;
+; lpm_mux.inc                           ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                                                                                                              ;         ;
+; lpm_decode.inc                        ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                                                                                                           ;         ;
+; aglobal130.inc                        ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                                                                                           ;         ;
+; a_rdenreg.inc                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                                                            ;         ;
+; altrom.inc                            ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                                                                                                               ;         ;
+; altram.inc                            ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                                                                                                               ;         ;
+; altdpram.inc                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                                                                                                             ;         ;
+; db/altsyncram_0pm1.tdf                ; yes             ; Auto-Generated Megafunction                           ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/db/altsyncram_0pm1.tdf                ;         ;
+; db/mmpu.ram0_mmemory_cbdbbe2c.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/User/Desktop/Academics/3rd Year/Microchip Systems and Design Lab/MPU PROJECT/MPU FINALv4 (with MAR and MDR, no tmp changes)/db/mmpu.ram0_mmemory_cbdbbe2c.hdl.mif ;         ;
++---------------------------------------+-----------------+-------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+

@@ -1,0 +1,1092 @@
+Analysis & Synthesis report for mMPU
+Thu May 08 23:03:02 2025
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated
+ 15. Source assignments for mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated|altsyncram_8fm1:altsyncram1
+ 16. Parameter Settings for User Entity Instance: mALU:ALU|mINC_DEC:IncrementDecrement
+ 17. Parameter Settings for Inferred Entity Instance: mMemory:Memory|altsyncram:aMemory_rtl_0
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Port Connectivity Checks: "mALU:ALU|mFullAdder:Full_Adder_7"
+ 20. Port Connectivity Checks: "mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_7"
+ 21. Port Connectivity Checks: "mALU:ALU"
+ 22. Port Connectivity Checks: "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter"
+ 23. Port Connectivity Checks: "mMDR:MDR"
+ 24. Port Connectivity Checks: "mInput_Register:Input_Register"
+ 25. Elapsed Time Per Partition
+ 26. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu May 08 23:03:02 2025           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; mMPU                                            ;
+; Top-level Entity Name              ; mMPU                                            ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 517                                             ;
+;     Total combinational functions  ; 453                                             ;
+;     Dedicated logic registers      ; 143                                             ;
+; Total registers                    ; 143                                             ;
+; Total pins                         ; 173                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 2,048                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; mMPU               ; mMPU               ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                     ;
++--------------------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                       ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                                  ; Library ;
++--------------------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; mMPU.v                                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mMPU.v                                ;         ;
+; mMUX_2x1.v                                             ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mMUX_2x1.v                            ;         ;
+; mDEMUX_1x2.v                                           ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mDEMUX_1x2.v                          ;         ;
+; mFlipFlop_JK_PosedgeCLK_NRST.v                         ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mFlipFlop_JK_PosedgeCLK_NRST.v        ;         ;
+; mFlipFlop_T_PosedgeCLK_NRST.v                          ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mFlipFlop_T_PosedgeCLK_NRST.v         ;         ;
+; mFlipFlop_D_PosedgeCLK_Enable.v                        ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mFlipFlop_D_PosedgeCLK_Enable.v       ;         ;
+; mFlipFlop_D_PosedgeCLK_MDR.v                           ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mFlipFlop_D_PosedgeCLK_MDR.v          ;         ;
+; mFlipFlop_D_PosedgeCLK_NRST_Enable.v                   ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mFlipFlop_D_PosedgeCLK_NRST_Enable.v  ;         ;
+; m8bitFlipFlop_D_PosedgeCLK_Enable.v                    ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/m8bitFlipFlop_D_PosedgeCLK_Enable.v   ;         ;
+; mProgramCounter.v                                      ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mProgramCounter.v                     ;         ;
+; mRingCounter.v                                         ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mRingCounter.v                        ;         ;
+; mB_Register.v                                          ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mB_Register.v                         ;         ;
+; mC_Register.v                                          ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mC_Register.v                         ;         ;
+; mTMP_Register.v                                        ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mTMP_Register.v                       ;         ;
+; mMemory.v                                              ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mMemory.v                             ;         ;
+; mMAR.v                                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mMAR.v                                ;         ;
+; mMDR.v                                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mMDR.v                                ;         ;
+; mINC_DEC.v                                             ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mINC_DEC.v                            ;         ;
+; mALU.v                                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mALU.v                                ;         ;
+; mHalfAdder.v                                           ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mHalfAdder.v                          ;         ;
+; mFullAdder.v                                           ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mFullAdder.v                          ;         ;
+; mAccumulator.v                                         ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mAccumulator.v                        ;         ;
+; mBUS.v                                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mBUS.v                                ;         ;
+; mControlMatrix.v                                       ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mControlMatrix.v                      ;         ;
+; mInput_Register.v                                      ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mInput_Register.v                     ;         ;
+; mOutput_Register.v                                     ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mOutput_Register.v                    ;         ;
+; mControllerSequencer.v                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mControllerSequencer.v                ;         ;
+; mInstructionRegister.v                                 ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mInstructionRegister.v                ;         ;
+; mInstructionDecoder.v                                  ; yes             ; User Verilog HDL File                                 ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/mInstructionDecoder.v                 ;         ;
+; /users/acer/desktop/instruction files/3a-waveform2.txt ; yes             ; Auto-Found File                                       ; /users/acer/desktop/instruction files/3a-waveform2.txt                                                        ;         ;
+; altsyncram.tdf                                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altsyncram.tdf                                              ;         ;
+; stratix_ram_block.inc                                  ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_ram_block.inc                                       ;         ;
+; lpm_mux.inc                                            ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mux.inc                                                 ;         ;
+; lpm_decode.inc                                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_decode.inc                                              ;         ;
+; aglobal130.inc                                         ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                              ;         ;
+; a_rdenreg.inc                                          ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/a_rdenreg.inc                                               ;         ;
+; altrom.inc                                             ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altrom.inc                                                  ;         ;
+; altram.inc                                             ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altram.inc                                                  ;         ;
+; altdpram.inc                                           ; yes             ; Megafunction                                          ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altdpram.inc                                                ;         ;
+; db/altsyncram_6si1.tdf                                 ; yes             ; Auto-Generated Megafunction                           ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/db/altsyncram_6si1.tdf                ;         ;
+; db/altsyncram_8fm1.tdf                                 ; yes             ; Auto-Generated Megafunction                           ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/db/altsyncram_8fm1.tdf                ;         ;
+; db/mmpu.ram0_mmemory_cbdbbe2c.hdl.mif                  ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/altera/13.0sp1/PROJS/MPU FINALv5 (fixed MVI A, memory negedge clock)/db/mmpu.ram0_mmemory_cbdbbe2c.hdl.mif ;         ;
++--------------------------------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 517   ;
+;                                             ;       ;
+; Total combinational functions               ; 453   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 295   ;
+;     -- 3 input functions                    ; 89    ;
+;     -- <=2 input functions                  ; 69    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 453   ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 143   ;
+;     -- Dedicated logic registers            ; 143   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 173   ;
+; Total memory bits                           ; 2048  ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out node                        ; nCLK  ;
+; Maximum fan-out                             ; 152   ;
+; Total fan-out                               ; 2386  ;
+; Average fan-out                             ; 3.07  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                             ;
++------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                                       ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                               ; Library Name ;
++------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
+; |mMPU                                                            ; 453 (5)           ; 143 (0)      ; 2048        ; 0            ; 0       ; 0         ; 173  ; 0            ; |mMPU                                                                                                             ; work         ;
+;    |mALU:ALU|                                                    ; 91 (71)           ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU                                                                                                    ; work         ;
+;       |mFullAdder:Full_Adder_0|                                  ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_0                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_0|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_0|mHalfAdder:Half_Adder_0                                                    ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_0|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mFullAdder:Full_Adder_1|                                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_1                                                                            ; work         ;
+;       |mFullAdder:Full_Adder_2|                                  ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_2                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_2|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mFullAdder:Full_Adder_3|                                  ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_3                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_3|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mFullAdder:Full_Adder_4|                                  ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_4                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_4|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mFullAdder:Full_Adder_5|                                  ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_5                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_5|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mFullAdder:Full_Adder_6|                                  ; 1 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_6                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_6|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mFullAdder:Full_Adder_7|                                  ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_7                                                                            ; work         ;
+;          |mHalfAdder:Half_Adder_1|                               ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mFullAdder:Full_Adder_7|mHalfAdder:Half_Adder_1                                                    ; work         ;
+;       |mINC_DEC:IncrementDecrement|                              ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement                                                                        ; work         ;
+;          |mFullAdder:Full_Adder_1|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_1                                                ; work         ;
+;          |mFullAdder:Full_Adder_2|                               ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_2                                                ; work         ;
+;             |mHalfAdder:Half_Adder_1|                            ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_2|mHalfAdder:Half_Adder_1                        ; work         ;
+;          |mFullAdder:Full_Adder_3|                               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_3                                                ; work         ;
+;          |mFullAdder:Full_Adder_4|                               ; 2 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_4                                                ; work         ;
+;             |mHalfAdder:Half_Adder_1|                            ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_4|mHalfAdder:Half_Adder_1                        ; work         ;
+;    |mAccumulator:Acc|                                            ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc                                                                                            ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_0|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_0                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_1|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_1                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_2|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_2                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_3|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_3                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_4|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_4                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_5|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_5                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_6|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_6                                                        ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Acc_7|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mAccumulator:Acc|mFlipFlop_D_PosedgeCLK_Enable:Acc_7                                                        ; work         ;
+;    |mBUS:Bus|                                                    ; 79 (79)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mBUS:Bus                                                                                                    ; work         ;
+;    |mB_Register:B|                                               ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B                                                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_0|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_0                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_1|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_1                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_2|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_2                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_3|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_3                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_4|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_4                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_5|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_5                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_6|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_6                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_7|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mB_Register:B|mFlipFlop_D_PosedgeCLK_Enable:Reg_7                                                           ; work         ;
+;    |mC_Register:C|                                               ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C                                                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_0|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_0                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_1|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_1                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_2|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_2                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_3|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_3                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_4|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_4                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_5|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_5                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_6|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_6                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_7|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mC_Register:C|mFlipFlop_D_PosedgeCLK_Enable:Reg_7                                                           ; work         ;
+;    |mControllerSequencer:ControllerSequencer|                    ; 167 (0)           ; 36 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer                                                                    ; work         ;
+;       |mControlMatrix:ControlMatrix|                             ; 78 (78)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix                                       ; work         ;
+;       |mInstructionDecoder:InstructionDecoder|                   ; 35 (35)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder                             ; work         ;
+;       |mRingCounter:RingCounter|                                 ; 54 (0)            ; 36 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter                                           ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_0|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_0  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_14|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_14 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17|             ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17 ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_1|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_1  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_2|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_2  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_3|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_3  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_7|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_7  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_8|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_8  ; work         ;
+;          |mFlipFlop_JK_PosedgeCLK_NRST:RingCount_9|              ; 3 (3)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_9  ; work         ;
+;    |mInput_Register:Input_Register|                              ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInput_Register:Input_Register                                                                              ; work         ;
+;       |m8bitFlipFlop_D_PosedgeCLK_Enable:Input_Register|         ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInput_Register:Input_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Input_Register                             ; work         ;
+;    |mInstructionRegister:InstructionRegister|                    ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister                                                                    ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_1| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_1           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_2           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_3| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_3           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_4| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_4           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_5| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_5           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_6| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_6           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7| ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_7           ; work         ;
+;    |mMAR:MAR|                                                    ; 0 (0)             ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR                                                                                                    ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_0|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_0                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_10|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_10                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_11|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_11                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_12|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_12                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_13|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_13                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_14|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_14                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_15|                     ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_15                                                               ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_1|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_1                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_2|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_2                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_3|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_3                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_4|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_4                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_5|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_5                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_6|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_6                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_7|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_7                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_8|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_8                                                                ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_9|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_9                                                                ; work         ;
+;    |mMDR:MDR|                                                    ; 9 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMDR:MDR                                                                                                    ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_MDR:Reg|                           ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMDR:MDR|mFlipFlop_D_PosedgeCLK_MDR:Reg                                                                     ; work         ;
+;       |mMUX_2x1:InSelectMUX|                                     ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMDR:MDR|mMUX_2x1:InSelectMUX                                                                               ; work         ;
+;    |mMemory:Memory|                                              ; 5 (5)             ; 9 (9)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMemory:Memory                                                                                              ; work         ;
+;       |altsyncram:aMemory_rtl_0|                                 ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMemory:Memory|altsyncram:aMemory_rtl_0                                                                     ; work         ;
+;          |altsyncram_6si1:auto_generated|                        ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated                                      ; work         ;
+;             |altsyncram_8fm1:altsyncram1|                        ; 0 (0)             ; 0 (0)        ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated|altsyncram_8fm1:altsyncram1          ; work         ;
+;    |mOutput_Register:Output_Register|                            ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mOutput_Register:Output_Register                                                                            ; work         ;
+;       |m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|                    ; 0 (0)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg                                      ; work         ;
+;    |mProgramCounter:ProgramCounter|                              ; 97 (49)           ; 16 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter                                                                              ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_0|             ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_0                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_10|            ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_10                                ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_11|            ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_11                                ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_12|            ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_12                                ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_13|            ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_13                                ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_14|            ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_14                                ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_15|            ; 5 (5)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_15                                ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_1|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_1                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_2|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_2                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_3|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_3                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_4|             ; 4 (4)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_4                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_5|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_5                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_6|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_6                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_7|             ; 2 (2)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_7                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_8|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_8                                 ; work         ;
+;       |mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_9|             ; 3 (3)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_9                                 ; work         ;
+;    |mTMP_Register:TMP|                                           ; 0 (0)             ; 8 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP                                                                                           ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_0|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_0                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_1|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_1                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_2|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_2                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_3|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_3                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_4|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_4                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_5|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_5                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_6|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_6                                                       ; work         ;
+;       |mFlipFlop_D_PosedgeCLK_Enable:Reg_7|                      ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mMPU|mTMP_Register:TMP|mFlipFlop_D_PosedgeCLK_Enable:Reg_7                                                       ; work         ;
++------------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                 ;
++---------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+; Name                                                                                                          ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                   ;
++---------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+; mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated|altsyncram_8fm1:altsyncram1|ALTSYNCRAM ; AUTO ; True Dual Port ; 256          ; 8            ; 256          ; 8            ; 2048 ; db/mMPU.ram0_mMemory_cbdbbe2c.hdl.mif ;
++---------------------------------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+------+---------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                 ;
++-----------------------------------------------------+----------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal  ; Free of Timing Hazards ;
++-----------------------------------------------------+----------------------+------------------------+
+; mBUS:Bus|outData[0]$latch                           ; mBUS:Bus|outData[7]  ; no                     ;
+; mBUS:Bus|outData[7]_307                             ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[1]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[2]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[3]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[4]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[5]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[6]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[7]$latch                           ; mBUS:Bus|outData[7]  ; yes                    ;
+; mBUS:Bus|outData[8]$latch                           ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[14]_468                            ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[9]$latch                           ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[10]$latch                          ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[11]$latch                          ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[12]$latch                          ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[13]$latch                          ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[14]$latch                          ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[15]$latch                          ; mBUS:Bus|outData[15] ; yes                    ;
+; mBUS:Bus|outData[15]_491                            ; mBUS:Bus|outData[15] ; yes                    ;
+; mALU:ALU|outQ[3]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[2]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[1]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[0]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[5]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[4]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[6]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; mALU:ALU|outQ[7]                                    ; mALU:ALU|outQ[7]     ; yes                    ;
+; Number of user-specified and inferred latches = 27  ;                      ;                        ;
++-----------------------------------------------------+----------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++---------------------------------------+------------------------------------------+
+; Register name                         ; Reason for Removal                       ;
++---------------------------------------+------------------------------------------+
+; mMemory:Memory|outData[1]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; mMemory:Memory|outData[2]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; mMemory:Memory|outData[3]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; mMemory:Memory|outData[4]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; mMemory:Memory|outData[5]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; mMemory:Memory|outData[6]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; mMemory:Memory|outData[7]~en          ; Merged with mMemory:Memory|outData[0]~en ;
+; Total Number of Removed Registers = 7 ;                                          ;
++---------------------------------------+------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 143   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 44    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 125   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Inverted Register Statistics                                                                                                ;
++-------------------------------------------------------------------------------------------------------------------+---------+
+; Inverted Register                                                                                                 ; Fan out ;
++-------------------------------------------------------------------------------------------------------------------+---------+
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_0|outQB  ; 6       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_17|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_1|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_2|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_3|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_4|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_5|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_6|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_7|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_8|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_9|outQB  ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_10|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_11|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_12|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_13|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_14|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_15|outQB ; 4       ;
+; mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_16|outQB ; 4       ;
+; Total number of inverted registers = 18                                                                           ;         ;
++-------------------------------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |mMPU|mBUS:Bus|outData[14] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |mMPU|mBUS:Bus|outData[0]  ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; No         ; |mMPU|mALU:ALU|outQ[0]     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Source assignments for mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------+
+; Assignment                      ; Value              ; From ; To                              ;
++---------------------------------+--------------------+------+---------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
++---------------------------------+--------------------+------+---------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for mMemory:Memory|altsyncram:aMemory_rtl_0|altsyncram_6si1:auto_generated|altsyncram_8fm1:altsyncram1 ;
++---------------------------------+--------------------+------+-------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                          ;
++---------------------------------+--------------------+------+-------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                           ;
++---------------------------------+--------------------+------+-------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mALU:ALU|mINC_DEC:IncrementDecrement ;
++----------------+----------+-------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                  ;
++----------------+----------+-------------------------------------------------------+
+; B_input        ; 00000001 ; Unsigned Binary                                       ;
++----------------+----------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: mMemory:Memory|altsyncram:aMemory_rtl_0    ;
++------------------------------------+---------------------------------------+----------------+
+; Parameter Name                     ; Value                                 ; Type           ;
++------------------------------------+---------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                     ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                    ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                   ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                    ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                   ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                     ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                             ; Untyped        ;
+; WIDTH_A                            ; 8                                     ; Untyped        ;
+; WIDTHAD_A                          ; 8                                     ; Untyped        ;
+; NUMWORDS_A                         ; 256                                   ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                          ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                  ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                  ; Untyped        ;
+; WIDTH_B                            ; 8                                     ; Untyped        ;
+; WIDTHAD_B                          ; 8                                     ; Untyped        ;
+; NUMWORDS_B                         ; 256                                   ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                          ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                  ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                  ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                  ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                  ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                     ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                     ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                  ; Untyped        ;
+; BYTE_SIZE                          ; 8                                     ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                             ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                  ; Untyped        ;
+; INIT_FILE                          ; db/mMPU.ram0_mMemory_cbdbbe2c.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                     ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                       ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                 ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                 ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                     ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone II                            ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_6si1                       ; Untyped        ;
++------------------------------------+---------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                    ;
++-------------------------------------------+-----------------------------------------+
+; Name                                      ; Value                                   ;
++-------------------------------------------+-----------------------------------------+
+; Number of entity instances                ; 1                                       ;
+; Entity Instance                           ; mMemory:Memory|altsyncram:aMemory_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                               ;
+;     -- WIDTH_A                            ; 8                                       ;
+;     -- NUMWORDS_A                         ; 256                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                            ;
+;     -- WIDTH_B                            ; 8                                       ;
+;     -- NUMWORDS_B                         ; 256                                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
++-------------------------------------------+-----------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mALU:ALU|mFullAdder:Full_Adder_7"                                                          ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; outCarryOut ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_7"                              ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; outCarryOut ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mALU:ALU"                                                                           ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; outQ ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter"                           ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; outRC[0]      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; outRCB[17..1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mMDR:MDR"                                                                                                                                                                             ;
++-----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                                                           ;
++-----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; inDataBus ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-----------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mInput_Register:Input_Register"                                                     ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; outQ ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu May 08 23:02:54 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mMPU -c mMPU
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file mmpu.v
+    Info (12023): Found entity 1: mMPU
+Info (12021): Found 1 design units, including 1 entities, in source file mmux_2x1.v
+    Info (12023): Found entity 1: mMUX_2x1
+Info (12021): Found 1 design units, including 1 entities, in source file mdemux_1x2.v
+    Info (12023): Found entity 1: mDEMUX_1x2
+Info (12021): Found 1 design units, including 1 entities, in source file mflipflop_jk_posedgeclk_nrst.v
+    Info (12023): Found entity 1: mFlipFlop_JK_PosedgeCLK_NRST
+Info (12021): Found 1 design units, including 1 entities, in source file mflipflop_t_posedgeclk_nrst.v
+    Info (12023): Found entity 1: mFlipFlop_T_PosedgeCLK_NRST
+Info (12021): Found 1 design units, including 1 entities, in source file mflipflop_d_posedgeclk_enable.v
+    Info (12023): Found entity 1: mFlipFlop_D_PosedgeCLK_Enable
+Info (12021): Found 1 design units, including 1 entities, in source file mflipflop_d_posedgeclk_mdr.v
+    Info (12023): Found entity 1: mFlipFlop_D_PosedgeCLK_MDR
+Info (12021): Found 1 design units, including 1 entities, in source file mflipflop_d_posedgeclk_nrst_enable.v
+    Info (12023): Found entity 1: mFlipFlop_D_PosedgeCLK_NRST_Enable
+Info (12021): Found 1 design units, including 1 entities, in source file m8bitflipflop_d_posedgeclk_enable.v
+    Info (12023): Found entity 1: m8bitFlipFlop_D_PosedgeCLK_Enable
+Info (12021): Found 1 design units, including 1 entities, in source file mprogramcounter.v
+    Info (12023): Found entity 1: mProgramCounter
+Info (12021): Found 1 design units, including 1 entities, in source file mringcounter.v
+    Info (12023): Found entity 1: mRingCounter
+Info (12021): Found 1 design units, including 1 entities, in source file mb_register.v
+    Info (12023): Found entity 1: mB_Register
+Info (12021): Found 1 design units, including 1 entities, in source file mc_register.v
+    Info (12023): Found entity 1: mC_Register
+Info (12021): Found 1 design units, including 1 entities, in source file mtmp_register.v
+    Info (12023): Found entity 1: mTMP_Register
+Info (12021): Found 1 design units, including 1 entities, in source file mmemory.v
+    Info (12023): Found entity 1: mMemory
+Info (12021): Found 1 design units, including 1 entities, in source file mmar.v
+    Info (12023): Found entity 1: mMAR
+Info (12021): Found 1 design units, including 1 entities, in source file mmdr.v
+    Info (12023): Found entity 1: mMDR
+Info (12021): Found 1 design units, including 1 entities, in source file minc_dec.v
+    Info (12023): Found entity 1: mINC_DEC
+Info (12021): Found 1 design units, including 1 entities, in source file malu.v
+    Info (12023): Found entity 1: mALU
+Info (12021): Found 1 design units, including 1 entities, in source file mhalfadder.v
+    Info (12023): Found entity 1: mHalfAdder
+Info (12021): Found 1 design units, including 1 entities, in source file mfulladder.v
+    Info (12023): Found entity 1: mFullAdder
+Info (12021): Found 1 design units, including 1 entities, in source file maccumulator.v
+    Info (12023): Found entity 1: mAccumulator
+Info (12021): Found 1 design units, including 1 entities, in source file mbus.v
+    Info (12023): Found entity 1: mBUS
+Info (12021): Found 1 design units, including 1 entities, in source file mcontrolmatrix.v
+    Info (12023): Found entity 1: mControlMatrix
+Info (12021): Found 1 design units, including 1 entities, in source file minput_register.v
+    Info (12023): Found entity 1: mInput_Register
+Info (12021): Found 1 design units, including 1 entities, in source file moutput_register.v
+    Info (12023): Found entity 1: mOutput_Register
+Info (12021): Found 1 design units, including 1 entities, in source file mcontrollersequencer.v
+    Info (12023): Found entity 1: mControllerSequencer
+Info (12021): Found 1 design units, including 1 entities, in source file minstructionregister.v
+    Info (12023): Found entity 1: mInstructionRegister
+Info (12021): Found 1 design units, including 1 entities, in source file minstructiondecoder.v
+    Info (12023): Found entity 1: mInstructionDecoder
+Warning (10236): Verilog HDL Implicit Net warning at mMPU.v(90): created implicit net for "noLo"
+Warning (10236): Verilog HDL Implicit Net warning at mMPU.v(115): created implicit net for "noHLT"
+Warning (10236): Verilog HDL Implicit Net warning at mMPU.v(119): created implicit net for "noCLK_RST"
+Info (12127): Elaborating entity "mMPU" for the top level hierarchy
+Info (12128): Elaborating entity "mBUS" for hierarchy "mBUS:Bus"
+Warning (10235): Verilog HDL Always Construct warning at mBUS.v(16): variable "UpByte" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mBUS.v(21): variable "iRDWR" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at mBUS.v(7): inferring latch(es) for variable "outData", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "outData[0]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[1]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[2]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[3]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[4]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[5]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[6]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[7]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[8]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[9]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[10]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[11]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[12]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[13]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[14]" at mBUS.v(7)
+Info (10041): Inferred latch for "outData[15]" at mBUS.v(7)
+Info (12128): Elaborating entity "mProgramCounter" for hierarchy "mProgramCounter:ProgramCounter"
+Info (12128): Elaborating entity "mFlipFlop_T_PosedgeCLK_NRST" for hierarchy "mProgramCounter:ProgramCounter|mFlipFlop_T_PosedgeCLK_NRST:ProgramCounter_0"
+Info (12128): Elaborating entity "mInput_Register" for hierarchy "mInput_Register:Input_Register"
+Info (12128): Elaborating entity "m8bitFlipFlop_D_PosedgeCLK_Enable" for hierarchy "mInput_Register:Input_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Input_Register"
+Info (12128): Elaborating entity "mMAR" for hierarchy "mMAR:MAR"
+Info (12128): Elaborating entity "mFlipFlop_D_PosedgeCLK_Enable" for hierarchy "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_0"
+Info (12128): Elaborating entity "mMemory" for hierarchy "mMemory:Memory"
+Warning (10850): Verilog HDL warning at mMemory.v(10): number of words (13) in memory file does not match the number of elements in the address range [0:255]
+Info (12128): Elaborating entity "mMDR" for hierarchy "mMDR:MDR"
+Info (12128): Elaborating entity "mMUX_2x1" for hierarchy "mMDR:MDR|mMUX_2x1:InSelectMUX"
+Warning (10235): Verilog HDL Always Construct warning at mMUX_2x1.v(8): variable "inA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mMUX_2x1.v(10): variable "inB" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at mMUX_2x1.v(6): inferring latch(es) for variable "outQ", which holds its previous value in one or more paths through the always construct
+Info (12128): Elaborating entity "mFlipFlop_D_PosedgeCLK_MDR" for hierarchy "mMDR:MDR|mFlipFlop_D_PosedgeCLK_MDR:Reg"
+Info (12128): Elaborating entity "mDEMUX_1x2" for hierarchy "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX"
+Warning (10235): Verilog HDL Always Construct warning at mDEMUX_1x2.v(9): variable "inData" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mDEMUX_1x2.v(15): variable "inData" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Info (12128): Elaborating entity "mInstructionRegister" for hierarchy "mInstructionRegister:InstructionRegister"
+Info (12128): Elaborating entity "mFlipFlop_D_PosedgeCLK_NRST_Enable" for hierarchy "mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0"
+Info (12128): Elaborating entity "mControllerSequencer" for hierarchy "mControllerSequencer:ControllerSequencer"
+Warning (10036): Verilog HDL or VHDL warning at mControllerSequencer.v(20): object "nRingCounterReset" assigned a value but never read
+Info (12128): Elaborating entity "mRingCounter" for hierarchy "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter"
+Info (12128): Elaborating entity "mFlipFlop_JK_PosedgeCLK_NRST" for hierarchy "mControllerSequencer:ControllerSequencer|mRingCounter:RingCounter|mFlipFlop_JK_PosedgeCLK_NRST:RingCount_0"
+Info (12128): Elaborating entity "mInstructionDecoder" for hierarchy "mControllerSequencer:ControllerSequencer|mInstructionDecoder:InstructionDecoder"
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(32): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(33): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(34): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(35): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(36): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(37): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(38): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(39): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(40): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(41): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(42): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(43): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(44): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(45): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(46): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(47): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(48): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(49): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(50): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(51): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(52): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(53): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(54): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(55): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(56): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(57): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(58): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(59): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mInstructionDecoder.v(60): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "mControlMatrix" for hierarchy "mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix"
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(17): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(20): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(22): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(25): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(27): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(30): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(32): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(34): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(37): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(39): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(41): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(44): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(46): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(49): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(52): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(55): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(57): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(59): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(61): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(63): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(65): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(67): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(69): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(71): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(73): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(76): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(80): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(83): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mControlMatrix.v(85): truncated value with size 32 to match size of target (1)
+Info (12128): Elaborating entity "mAccumulator" for hierarchy "mAccumulator:Acc"
+Info (12128): Elaborating entity "mALU" for hierarchy "mALU:ALU"
+Warning (10036): Verilog HDL or VHDL warning at mALU.v(13): object "outCarryOut" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at mALU.v(19): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at mALU.v(20): truncated value with size 32 to match size of target (1)
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(47): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(48): variable "wQ" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(49): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(50): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(50): variable "inDataB" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(51): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(52): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(52): variable "inDataB" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(53): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(54): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(54): variable "inDataB" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(55): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(56): variable "noutDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(57): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(58): variable "noutDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(59): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(61): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(62): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(64): variable "inOpcode" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(66): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(67): variable "inDataA" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at mALU.v(70): variable "outQ" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at mALU.v(43): inferring latch(es) for variable "outQ", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "outQ[0]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[1]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[2]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[3]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[4]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[5]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[6]" at mALU.v(43)
+Info (10041): Inferred latch for "outQ[7]" at mALU.v(43)
+Info (12128): Elaborating entity "mINC_DEC" for hierarchy "mALU:ALU|mINC_DEC:IncrementDecrement"
+Warning (10235): Verilog HDL Always Construct warning at mINC_DEC.v(29): variable "nQ" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Info (12128): Elaborating entity "mFullAdder" for hierarchy "mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_0"
+Info (12128): Elaborating entity "mHalfAdder" for hierarchy "mALU:ALU|mINC_DEC:IncrementDecrement|mFullAdder:Full_Adder_0|mHalfAdder:Half_Adder_0"
+Info (12128): Elaborating entity "mTMP_Register" for hierarchy "mTMP_Register:TMP"
+Info (12128): Elaborating entity "mB_Register" for hierarchy "mB_Register:B"
+Info (12128): Elaborating entity "mC_Register" for hierarchy "mC_Register:C"
+Info (12128): Elaborating entity "mOutput_Register" for hierarchy "mOutput_Register:Output_Register"
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[0]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[1]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[2]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[3]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[4]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[5]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[6]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mMDR:MDR|mDEMUX_1x2:OutSelectDeMUX|outQB[7]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[8]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[9]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[10]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[11]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[12]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[13]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[14]" feeding internal logic into a wire
+    Warning (13049): Converted tri-state buffer "mProgramCounter:ProgramCounter|tWbus[15]" feeding internal logic into a wire
+Warning (276027): Inferred dual-clock RAM node "mMemory:Memory|aMemory_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "mMemory:Memory|aMemory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/mMPU.ram0_mMemory_cbdbbe2c.hdl.mif
+Info (12130): Elaborated megafunction instantiation "mMemory:Memory|altsyncram:aMemory_rtl_0"
+Info (12133): Instantiated megafunction "mMemory:Memory|altsyncram:aMemory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/mMPU.ram0_mMemory_cbdbbe2c.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6si1.tdf
+    Info (12023): Found entity 1: altsyncram_6si1
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_8fm1.tdf
+    Info (12023): Found entity 1: altsyncram_8fm1
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[0]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[0]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[1]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[1]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[2]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[2]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[3]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[3]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[4]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[4]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[5]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[5]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[6]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[6]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|tMDR[7]" to the node "mMDR:MDR|mMUX_2x1:InSelectMUX|outQ[7]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[0]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[0]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[1]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[1]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[2]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[2]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[3]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[3]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[4]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[4]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[5]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[5]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[6]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[6]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[7]" to the node "mOutput_Register:Output_Register|m8bitFlipFlop_D_PosedgeCLK_Enable:Reg|outData[7]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[8]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_8|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[9]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_9|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[10]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_10|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[11]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_11|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[12]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_12|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[13]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_13|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[14]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_14|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mBUS:Bus|outData[15]" to the node "mMAR:MAR|mFlipFlop_D_PosedgeCLK_Enable:Reg_15|outData" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[0]" to the node "mMemory:Memory|tMDR[0]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[1]" to the node "mMemory:Memory|tMDR[1]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[2]" to the node "mMemory:Memory|tMDR[2]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[3]" to the node "mMemory:Memory|tMDR[3]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[4]" to the node "mMemory:Memory|tMDR[4]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[5]" to the node "mMemory:Memory|tMDR[5]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[6]" to the node "mMemory:Memory|tMDR[6]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mMemory:Memory|outData[7]" to the node "mMemory:Memory|tMDR[7]" into an OR gate
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[0]" to the node "mBUS:Bus|outData[8]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[1]" to the node "mBUS:Bus|outData[9]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[2]" to the node "mBUS:Bus|outData[10]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[3]" to the node "mBUS:Bus|outData[11]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[4]" to the node "mBUS:Bus|outData[12]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[5]" to the node "mBUS:Bus|outData[13]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[6]" to the node "mBUS:Bus|outData[14]" into an OR gate
+    Warning (13047): Converted the fan-out from the tri-state buffer "mProgramCounter:ProgramCounter|tWbus[7]" to the node "mBUS:Bus|outData[15]" into an OR gate
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "mBUS:Bus|outData[15]_491" merged with LATCH primitive "mBUS:Bus|outData[14]_468"
+Warning (13012): Latch mBUS:Bus|outData[0]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[7]_307 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[1]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[2]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[3]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[4]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[5]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[6]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[7]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[8]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[14]_468 has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[9]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[10]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[11]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[12]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[13]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[14]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mBUS:Bus|outData[15]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mControllerSequencer:ControllerSequencer|mControlMatrix:ControlMatrix|oLmarc
+    Warning (13013): Ports ENA and CLR on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Warning (13012): Latch mALU:ALU|outQ[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal mInstructionRegister:InstructionRegister|mFlipFlop_D_PosedgeCLK_NRST_Enable:InstructionRegister_0|outData
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 709 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 163 output pins
+    Info (21061): Implemented 528 logic cells
+    Info (21064): Implemented 8 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 230 warnings
+    Info: Peak virtual memory: 4601 megabytes
+    Info: Processing ended: Thu May 08 23:03:02 2025
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:04
+
+
